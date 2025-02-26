@@ -1,16 +1,16 @@
 #include "minitalk.h"
 
-char c = 0;
 void	sig_handler(int sig_num)
 {
-	static char	bit;
-	static char	c;
+	static unsigned char	bit;
+	static unsigned char	c;
 
 	if (bit == 0)
 		bit = 0b10000000;
-	if (SIGUSR1)
+	printf("%d\n", bit);
+	if (sig_num == SIGUSR1)
 		c = c | bit;
-	bit >> 1;
+	bit >>= 1;
 	if (bit == 0b1)
 	{
 		write(1, &c, 1);

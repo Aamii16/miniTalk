@@ -29,6 +29,8 @@ int	main(int argc, char **argv)
 
 	//handle arguments 
 	s_pid = atoi(argv[1]);
+	if (argc != 3 || !s_pid )
+		return (write(2, "Error\n", 6));
 	index = 0; 
 	while(argv[2][index])
 	{

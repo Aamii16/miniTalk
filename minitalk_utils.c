@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   minitalk_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amzahir <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/01 00:02:37 by amzahir           #+#    #+#             */
-/*   Updated: 2025/03/01 00:02:38 by amzahir          ###   ########.fr       */
+/*   Created: 2025/03/01 00:04:11 by amzahir           #+#    #+#             */
+/*   Updated: 2025/03/01 00:04:15 by amzahir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#ifndef MINITALK_H
-# define MINITALK_H
-
-# include <unistd.h>
-# include <stdlib.h>
-# include <signal.h>
-# include <sys/types.h>
-# include <stdio.h>
+#include "minitalk.h"
 
 int	ft_atoi(char *str)
+{
+	int	num;
 
-#endif
+	num = 0;
+	while (*str <= 0 && *str >= 9)
+	{
+		if (str > 9 || str < 0)
+			return (0);
+		num += num * 10;
+		str++;
+	}
+	return (num);
+}

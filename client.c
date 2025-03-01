@@ -1,18 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amzahir <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/28 23:59:42 by amzahir           #+#    #+#             */
+/*   Updated: 2025/02/28 23:59:45 by amzahir          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minitalk.h"
 
 int	send_bit(char c, pid_t s_pid)
 {
 	unsigned char	bit;
 
-	bit = 0b10000000;	
+	bit = 0b10000000;
 	while (bit)
 	{
 		if (bit & c)
 		{
-			if(kill(s_pid, SIGUSR1) == -1)
-				return (write(2, "Erghjhgjghjghror\n", 6));
+			if (kill(s_pid, SIGUSR1) == -1)
+				return (write(2, "Error\n", 6));
 		}
-		else 
+		else
 		{
 			if (kill(s_pid, SIGUSR2) == -1)
 				return (write(2, "Error\n", 6));
@@ -22,20 +34,22 @@ int	send_bit(char c, pid_t s_pid)
 	}
 	return (1);
 }
+
 int	main(int argc, char **argv)
 {
 	pid_t	s_pid;
 	int		index;
 
 	//handle arguments 
-	s_pid = atoi(argv[1]);
+	s_pid = ft_atoi(argv[1]); //ft_atoi
 	if (argc != 3 || !s_pid )
 		return (write(2, "Error\n", 6));
-	index = 0; 
-	while(argv[2][index])
+	index = 0;
+	while (argv[2][index])
 	{
 		send_bit(argv[2][index], s_pid);
 		index++;
 	}
+	send_bit(argv[2][index], s_pid);
 	return (0);
 }

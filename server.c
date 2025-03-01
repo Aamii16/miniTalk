@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   server.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amzahir <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/28 23:59:56 by amzahir           #+#    #+#             */
+/*   Updated: 2025/02/28 23:59:57 by amzahir          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minitalk.h"
 
 void	sig_handler(int sig_num)
@@ -12,11 +24,16 @@ void	sig_handler(int sig_num)
 	bit >>= 1;
 	if (bit == 0)
 	{
-		write(1, &c, 1);
+		if (c == '\0')
+			write(1, "\n", 1);
+		else
+			write(1, &c, 1);
+		usleep(100);
 		c = 0;
-	}	
+	}
 }
-int main()
+
+int	main(void)
 {
 	printf("%u\n", getpid());
 	signal(SIGUSR1, sig_handler);
@@ -24,6 +41,5 @@ int main()
 	while (1)
 	{
 		pause();
-		usleep(100);
 	}
 }

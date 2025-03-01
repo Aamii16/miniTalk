@@ -22,12 +22,18 @@ int	send_bit(char c, pid_t s_pid)
 		if (bit & c)
 		{
 			if (kill(s_pid, SIGUSR1) == -1)
-				return (write(2, "Error\n", 6));
+			{
+				write(2, "Error\n", 6);
+				exit (1);
+			}
 		}
 		else
 		{
 			if (kill(s_pid, SIGUSR2) == -1)
-				return (write(2, "Error\n", 6));
+			{
+				write(2, "Error\n", 6);
+				exit (1);
+			}
 		}
 		bit >>= 1;
 		usleep(100);
@@ -40,10 +46,9 @@ int	main(int argc, char **argv)
 	pid_t	s_pid;
 	int		index;
 
-	//handle arguments 
-	s_pid = ft_atoi(argv[1]); //ft_atoi
-	if (argc != 3 || !s_pid )
-		return (write(2, "Error\n", 6));
+	s_pid = ft_atoi(argv[1]);
+	if (argc != 3 || s_pid <= 0)
+		return (write(2, "Wrong arguments\n", 16));
 	index = 0;
 	while (argv[2][index])
 	{

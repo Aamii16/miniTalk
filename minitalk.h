@@ -14,11 +14,12 @@
 # define MINITALK_H
 
 # include <unistd.h>
-# include <stdlib.h>
 # include <signal.h>
+# include <stdlib.h>
 # include <sys/types.h>
 # include <stdio.h>
 
-int	ft_atoi(char *str)
+void	ft_putnbr(int n);
+int	ft_atoi(char *str);
 
 #endif

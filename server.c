@@ -35,7 +35,8 @@ void	sig_handler(int sig_num)
 
 int	main(void)
 {
-	printf("%u\n", getpid());
+	ft_putnbr(getpid());
+	write(1,"\n", 1);
 	signal(SIGUSR1, sig_handler);
 	signal(SIGUSR2, sig_handler);
 	while (1)

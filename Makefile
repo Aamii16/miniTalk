@@ -14,5 +14,16 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 DEP = utils.c
-server:
-	$(CC) $(CFLAGS) server.c $(DEP) -o server
+
+NAME = minitalk
+
+all : $(NAME)
+
+$(NAME) := SERVER CLIENT
+
+SERVER: server.o utils.o
+	$(CC) $(CFLAGS) -o 
+
+CLIENT:
+	$(CC) $(CFLAGS) 
+

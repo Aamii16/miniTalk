@@ -16,9 +16,10 @@ void	sig_handler(int sig_num, siginfo_t *info, void *ucontext)
 {
 	static unsigned char	bit;
 	static unsigned char	c;
-	pid_t	client_pid;
+	static int	client_pid;
 
-	client_pid = info->si_pid;
+	if(!client_pid)
+		client_pid = info->si_pid;
 	if (client_pid != info->si_pid)
 	{
 		c = 0;
@@ -37,7 +38,6 @@ void	sig_handler(int sig_num, siginfo_t *info, void *ucontext)
 		else
 			write(1, &c, 1);
 		c = 0;
-		//usleep(100);
 	}
 }
 

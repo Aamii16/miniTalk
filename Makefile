@@ -13,17 +13,32 @@
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-DEP = utils.c
+OBJS = server.o client.o utils.o
 
 NAME = minitalk
 
+DEP = minitalk.h
+
 all : $(NAME)
 
-$(NAME) := SERVER CLIENT
+%.o: %.c $(DEP)
+	$(CC) -c $(CFLAGS) $< -o $@
 
-SERVER: server.o utils.o
-	$(CC) $(CFLAGS) -o 
+$(NAME): server client
 
-CLIENT:
-	$(CC) $(CFLAGS) 
+server: server.o utils.o
+	$(CC) $(CFLAGS) $^ -o $@
 
+client: client.o utils.o
+	$(CC) $(CFLAGS) $^ -o $@
+
+clean: 
+	rm -rf $(OBJS)
+
+fclean: clean
+	rm -rf $(NAME)
+
+re: fclean $(NAME)
+
+.PHONY:
+	all clean fclean re

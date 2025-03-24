@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amzahir <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: amzahir <amzahir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 23:59:42 by amzahir           #+#    #+#             */
-/*   Updated: 2025/02/28 23:59:45 by amzahir          ###   ########.fr       */
+/*   Updated: 2025/03/18 01:04:41 by amzahir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,14 @@ int	send_bit(char c, pid_t s_pid)
 
 int	main(int argc, char **argv)
 {
-	pid_t	s_pid;
+	int		s_pid;
 	int		index;
 
 	s_pid = ft_atoi(argv[1]);
 	if (argc != 3 || s_pid <= 0)
 		return (write(2, "Wrong arguments\n", 16));
 	index = 0;
+	printf("%d\n", getpid());
 	while (argv[2][index])
 	{
 		send_bit(argv[2][index], s_pid);

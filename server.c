@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amzahir <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: amzahir <amzahir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 23:59:56 by amzahir           #+#    #+#             */
-/*   Updated: 2025/02/28 23:59:57 by amzahir          ###   ########.fr       */
+/*   Updated: 2025/03/17 00:03:37 by amzahir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void	sig_handler(int sig_num, siginfo_t *info, void *ucontext)
 {
-	static unsigned char	bit;
-	static unsigned char	c;
-	static int	client_pid;
+	static unsigned char	(bit), (c);
+	static int				client_pid;
 
 	if(!client_pid)
 		client_pid = info->si_pid;
@@ -24,6 +23,7 @@ void	sig_handler(int sig_num, siginfo_t *info, void *ucontext)
 	{
 		c = 0;
 		bit = 0;
+		client_pid = info->si_pid;
 	}
 	(void)(ucontext);
 	if (bit == 0)
@@ -47,12 +47,11 @@ int	main(void)
 
 	action.sa_sigaction = sig_handler;
 	action.sa_flags = SA_SIGINFO;
+	//hanf=dle sa_mask
 	ft_putnbr(getpid());
 	write(1,"\n", 1);
 	sigaction(SIGUSR1, &action, NULL);
 	sigaction(SIGUSR2, &action, NULL);
 	while (1)
-	{
-		//pause();
-	}
+		;
 }

@@ -6,7 +6,7 @@
 /*   By: amzahir <amzahir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 23:59:56 by amzahir           #+#    #+#             */
-/*   Updated: 2025/03/17 00:03:37 by amzahir          ###   ########.fr       */
+/*   Updated: 2025/03/26 02:54:17 by amzahir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	sig_handler(int sig_num, siginfo_t *info, void *ucontext)
 {
-	static unsigned char	(bit), (c);
-	static int				client_pid;
+	static int	client_pid;
 
-	if(!client_pid)
+	static unsigned char (bit), (c);
+	if (!client_pid)
 		client_pid = info->si_pid;
 	if (client_pid != info->si_pid)
 	{
@@ -43,15 +43,15 @@ void	sig_handler(int sig_num, siginfo_t *info, void *ucontext)
 
 int	main(void)
 {
-	struct sigaction action;
+	struct sigaction	action;
 
 	action.sa_sigaction = sig_handler;
 	action.sa_flags = SA_SIGINFO;
-	//hanf=dle sa_mask
+	sigemptyset(&action.sa_mask);
 	ft_putnbr(getpid());
-	write(1,"\n", 1);
+	write(1, "\n", 1);
 	sigaction(SIGUSR1, &action, NULL);
 	sigaction(SIGUSR2, &action, NULL);
 	while (1)
-		;
+		pause();
 }

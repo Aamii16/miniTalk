@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: amzahir <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: amzahir <amzahir@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/10 01:19:13 by amzahir           #+#    #+#              #
-#    Updated: 2025/03/10 01:19:15 by amzahir          ###   ########.fr        #
+#    Updated: 2025/03/26 03:09:53 by amzahir          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ clean:
 	rm -rf $(OBJS)
 
 fclean: clean
-	rm -rf $(NAME)
+	rm -rf server client
 
 re: fclean $(NAME)
 

@@ -1,14 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk_utils.c                                   :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amzahir <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: amzahir <amzahir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 00:04:11 by amzahir           #+#    #+#             */
-/*   Updated: 2025/03/01 00:04:15 by amzahir          ###   ########.fr       */
+/*   Updated: 2025/03/26 02:26:12 by amzahir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "minitalk.h"
 
 static int	count_digits(int nb)
@@ -32,7 +33,7 @@ void	ft_putnbr(int n)
 {
 	long	nb;
 	int		len;
-	char		digits[11];
+	char	digits[11];
 	int		i;
 
 	i = 0;

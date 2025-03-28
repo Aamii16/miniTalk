@@ -6,7 +6,7 @@
 /*   By: amzahir <amzahir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 23:59:56 by amzahir           #+#    #+#             */
-/*   Updated: 2025/03/26 02:54:17 by amzahir          ###   ########.fr       */
+/*   Updated: 2025/03/28 05:22:44 by amzahir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,5 @@ int	main(void)
 	sigaction(SIGUSR1, &action, NULL);
 	sigaction(SIGUSR2, &action, NULL);
 	while (1)
-		pause();
+		;
 }
